@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap');
+
+/* ---------- Base ---------- */
+html, body, [class*="css"], .stApp {
+    font-family: 'Poppins', sans-serif;
+}
+
+#MainMenu, footer, header { visibility: hidden; }
+
+.block-container {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+    max-width: 1100px;
+}
+
+/* Animated gradient background */
+.stApp {
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #c9a7eb, #fbc2eb);
+    background-size: 400% 400%;
+    animation: bgShift 14s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes bgShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ---------- Animations ---------- */
+.fade-in { animation: fadeIn 1.2s ease backwards; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes pop {
+    from { opacity: 0; transform: scale(.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-18px); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, .4), 0 0 40px rgba(155, 93, 229, .4); }
+    50%      { box-shadow: 0 0 35px rgba(255, 255, 255, .8), 0 0 65px rgba(255, 111, 165, .7); }
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+@keyframes floatUp {
+    to { transform: translateY(-110vh) rotate(360deg); }
+}
+
+/* ---------- Floating hearts ---------- */
+.heart {
+    position: fixed;
+    bottom: -60px;
+    font-size: 1.6rem;
+    animation: floatUp linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    opacity: .8;
+}
+
+/* ---------- Gate (intro) ---------- */
+.gate {
+    text-align: center;
+    padding: 12vh 1rem 2rem;
+    color: #fff;
+}
+.gate-gift {
+    font-size: 5rem;
+    animation: bounce 1.6s ease-in-out infinite;
+}
+.gate-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 4px 20px rgba(155, 93, 229, .5);
+}
+.gate-sub { font-size: 1.2rem; }
+
+/* ---------- Hero ---------- */
+.hero {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+}
+.hero-tag {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: .85rem;
+    opacity: .9;
+}
+.hero-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: #fff;
+    text-shadow: 0 4px 20px rgba(155, 93, 229, .5);
+    margin: .3rem 0;
+}
+.hero-name {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    background: linear-gradient(90deg, #fff, #ffd6e0, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+.hero-sub {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+/* ---------- Music ---------- */
+.now-playing {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: .3rem;
+}
+audio {
+    width: 100%;
+    border-radius: 999px;
+}
+
+/* ---------- Section titles ---------- */
+.section-title {
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1.2rem;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, .2);
+}
+
+/* ---------- Countdown ---------- */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.count-box {
+    background: rgba(255, 255, 255, .25);
+    border: 1px solid rgba(255, 255, 255, .4);
+    backdrop-filter: blur(8px);
+    border-radius: 18px;
+    padding: 1rem 1.4rem;
+    min-width: 110px;
+    text-align: center;
+    color: #fff;
+}
+.count-box b {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+.count-box span {
+    font-size: .85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.count-today {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center;
+}
+
+/* ---------- Gallery ---------- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.4rem;
+}
+.card {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+    transition: transform .4s ease, box-shadow .4s ease;
+    animation: pop .8s ease backwards;
+}
+.card img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+}
+.card:hover {
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow: 0 18px 40px rgba(155, 93, 229, .35);
+}
+.card:hover img {
+    transform: scale(1.08);
+}
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: .9rem 1rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, .75));
+    color: #fff;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+/* ---------- Glass cards ---------- */
+.glass {
+    background: rgba(255, 255, 255, .22);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, .4);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .12);
+    color: #fff;
+}
+.letter p {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+.letter .sign {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.6rem;
+    text-align: right;
+}
+
+/* ---------- Special Entrance (3-Step Reveal) ---------- */
+.secret-vault {
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(155, 93, 229, .45), rgba(255, 111, 165, .45));
+    backdrop-filter: blur(14px);
+    border: 2px solid rgba(255, 255, 255, .6);
+    border-radius: 28px;
+    padding: 2.5rem 1.8rem;
+    margin-bottom: 1rem;
+    animation: pulseGlow 3s infinite;
+}
+.secret-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, .25);
+    padding: .35rem 1rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: .8rem;
+}
+.envelope-icon {
+    font-size: 4.5rem;
+    animation: bounce 1.8s ease-in-out infinite;
+    margin: .5rem 0;
+}
+.secret-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    margin-bottom: .4rem;
+}
+.secret-sub {
+    opacity: .9;
+    font-size: 1rem;
+}
+
+/* Step 2: Polaroid Spotlight Frame */
+.polaroid-frame {
+    max-width: 440px;
+    margin: 0 auto 1.5rem;
+    background: #fff;
+    padding: 16px 16px 26px;
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(90, 45, 110, .35);
+    text-align: center;
+    animation: pop .9s ease backwards;
+}
+.polaroid-frame img {
+    width: 100%;
+    border-radius: 14px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+.polaroid-title {
+    font-family: 'Pacifico', cursive;
+    color: #9b5de5;
+    font-size: 1.9rem;
+    margin-top: 1rem;
+}
+.polaroid-caption {
+    color: #666;
+    font-size: .98rem;
+    margin-top: .2rem;
+}
+
+/* Step 3: Unfolded Heartfelt Note */
+.final-note {
+    background: linear-gradient(180deg, #fffdf9 0%, #fff5f8 100%);
+    color: #4a2559;
+    border: 2px solid #ffd6e6;
+    border-radius: 28px;
+    padding: 2.5rem 2.2rem;
+    box-shadow: 0 18px 55px rgba(155, 93, 229, .35);
+    line-height: 1.9;
+    animation: pop .8s ease backwards;
+}
+.final-note-badge {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: .3rem;
+}
+.final-note h3 {
+    font-family: 'Pacifico', cursive;
+    color: #9b5de5;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.final-note p {
+    font-size: 1.06rem;
+    margin-bottom: 1.15rem;
+    animation: fadeIn .9s ease backwards;
+}
+.final-note .sign {
+    font-family: 'Pacifico', cursive;
+    text-align: right;
+    font-size: 1.7rem;
+    color: #ff6fa5;
+    margin-top: 1.5rem;
+}
+
+/* ---------- Image (funny photo) ---------- */
+[data-testid="stImage"] img {
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .25);
+}
+
+/* ---------- Buttons ---------- */
+div.stButton > button {
+    background: linear-gradient(90deg, #ff6fa5, #9b5de5);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: .8rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    box-shadow: 0 8px 25px rgba(155, 93, 229, .45);
+    transition: transform .2s, box-shadow .2s;
+}
+div.stButton > button:hover,
+div.stButton > button:focus {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(155, 93, 229, .6);
+    color: #fff;
+    border: none;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    text-align: center;
+    color: #fff;
+    margin-top: 3rem;
+    opacity: .9;
+}
+
+/* ---------- Password Lock Cards & Inputs ---------- */
+.lock-card {
+    background: rgba(255, 255, 255, .24);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, .5);
+    border-radius: 22px;
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+    color: #fff;
+    margin-bottom: .8rem;
+}
+.lock-icon {
+    font-size: 2.5rem;
+    margin-bottom: .2rem;
+}
+.lock-title {
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+.lock-hint {
+    font-size: .88rem;
+    background: rgba(0, 0, 0, .18);
+    display: inline-block;
+    padding: .3rem .85rem;
+    border-radius: 999px;
+    margin-top: .4rem;
+    color: #fff9db;
+}
+
+div[data-testid="stTextInput"] input {
+    border-radius: 999px !important;
+    text-align: center;
+    font-weight: 600;
+    padding: .65rem 1rem !important;
+    background: rgba(255, 255, 255, .92) !important;
+    color: #5a2d6e !important;
+    border: 2px solid #ff6fa5 !important;
+}
